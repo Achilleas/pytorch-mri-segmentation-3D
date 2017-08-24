@@ -1,0 +1,12 @@
+1x1x1x1_0_0 Iterations:     0 iou: 0.7052 dice: 0.5732 recall: 0.6487 precision: 0.5277 
+1x1x1x1_0_1 Iterations:     0 iou: 0.6969 dice: 0.5512 recall: 0.7058 precision: 0.4785 
+1x1x1x1_1_1 Iterations:     0 iou: 0.7050 dice: 0.5709 recall: 0.6140 precision: 0.5647 iou_secondary: 0.1693 
+
+1x2x2x1_0_1 Iterations:     0 iou: 0.7011 dice: 0.5592 recall: 0.6202 precision: 0.5430 
+1x2x2x1_1_1 Iterations:     0 iou: 0.7022 dice: 0.5623 recall: 0.6701 precision: 0.5085 iou_secondary: 0.1727 
+
+2x2x2x2_0_1 Iterations:     0 iou: 0.6934 dice: 0.5442 recall: 0.6730 precision: 0.4830 
+2x2x2x2_1_1 Iterations:     0 iou: 0.6995 dice: 0.5552 recall: 0.5794 precision: 0.5622 iou_secondary: 0.1666 
+
+1x2x4x8_0_1 Iterations:     0 iou: 0.6903 dice: 0.5362 recall: 0.6297 precision: 0.4918 
+1x2x4x8_1_1 Iterations:     0 iou: 0.6893 dice: 0.5343 recall: 0.5779 precision: 0.5344 iou_secondary: 0.1426 

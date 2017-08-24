@@ -1,0 +1,11 @@
+main_folder_path='../../Data/MS2017test/'
+
+cd utils/
+python trainLandmarks.py --mainFolderPath=$main_folder_path --pcRange=1-99
+python resizeScans.py --mainFolderPath="$main_folder_path" --postfix=_200x200x100orig --noGIFS --withNorm=1 --size=200x200x100
+python -c 'import PP;  PP.generateTrainValFile(0.8, main_folder = "'$main_folder_path'", postfix="_200x200x100orig")'
+
+python train.py --useGPU=1 --archId=0 --maxIter=100000 --lr=0.0001 --iterSize=25 --patchSize=60
+Model is saved in train_results/models/
+
+python eval.py --patchPredSize=60 --modelPath=$modelpath --singleEval

@@ -1,0 +1,2 @@
+1x1x1x1_0_1 151+  0 iou: 0.7073 dice: 0.5792 recall: 0.6276 precision: 0.5564
+2x2x2x2_0_1 295+  0 iou: 0.6952 dice: 0.5478 recall: 0.5396 precision: 0.5928
