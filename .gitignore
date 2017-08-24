@@ -1,0 +1,6 @@
+
+*.pth
+
+train_alt.py
+
+train_results/logs/DL3D_dice_1_2017-08-24-02-01_log.txt
