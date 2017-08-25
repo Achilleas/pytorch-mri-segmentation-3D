@@ -1,9 +1,17 @@
-1x1x1x1_0_0 RF: 151 iou: 0.6971 dice: 0.5558 recall: 0.5940 precision: 0.5567
-2x2x1x1_0_0 RF: 199 iou: 0.6690 dice: 0.4944 recall: 0.5153 precision: 0.5044
-1x2x2x1_0_0 RF: 223 iou: 0.6827 dice: 0.5233 recall: 0.5677 precision: 0.5156
-2x2x2x2_0_0 RF: 295 iou: 0.6889 dice: 0.5386 recall: 0.6100 precision: 0.4942
-4x4x2x2_0_0 RF: 391 iou: 0.6882 dice: 0.5318 recall: 0.6192 precision: 0.4975
-4x4x4x4_0_0 RF: 583 iou: 0.6872 dice: 0.5276 recall: 0.5342 precision: 0.5449
-1x1x1x1_0_1 151+  0 iou: 0.7073 dice: 0.5792 recall: 0.6276 precision: 0.5564 
-2x2x2x2_0_1 295+  0 iou: 0.6952 dice: 0.5478 recall: 0.5396 precision: 0.5928 
+1x1x1x1_0_0 	RF: 151 iou: 0.6971 dice: 0.5558 recall: 0.5940 precision: 0.5567
+2x2x1x1_0_0 	RF: 199 iou: 0.6690 dice: 0.4944 recall: 0.5153 precision: 0.5044
+1x2x2x1_0_0 	RF: 223 iou: 0.6827 dice: 0.5233 recall: 0.5677 precision: 0.5156
+2x2x2x2_0_0 	RF: 295 iou: 0.6889 dice: 0.5386 recall: 0.6100 precision: 0.4942
+4x4x2x2_0_0 	RF: 391 iou: 0.6882 dice: 0.5318 recall: 0.6192 precision: 0.4975
+4x4x4x4_0_0 	RF: 583 iou: 0.6872 dice: 0.5276 recall: 0.5342 precision: 0.5449
+1x1x1x1_0_1 	151+  0 iou: 0.7073 dice: 0.5792 recall: 0.6276 precision: 0.5564 
+2x2x2x2_0_1 	295+  0 iou: 0.6952 dice: 0.5478 recall: 0.5396 precision: 0.5928 
+1x1x1x1_1_1  	151+  0 iou: 0.6981 dice: 0.5590 recall: 0.5694 precision: 0.6001 iou_secondary: 0.1741 
+1x1x1x1_1_1alt 	151+  0 iou: 0.6987 dice: 0.5610 recall: 0.6020 precision: 0.5583 iou_secondary: 0.1459 
 
+
+
+Iterations:     0 iou: 0.6981 dice: 0.5590 recall: 0.5694 precision: 0.6001 iou_secondary: 0.1741 
+
+alt
+Iterations:     0 iou: 0.6987 dice: 0.5610 recall: 0.6020 precision: 0.5583 iou_secondary: 0.1459 

@@ -33,7 +33,7 @@ for d_i = 1:size(dilation_arr, 1)
                     train_loss = vals(:,2);
                     val_loss = vals(:,3);
                     
-                    plot(iter_num, val_loss);
+                    plot(iter_num, train_loss);
                 else
                     vals = table2array(filetable(:,[3,5,7,11,15]));
 
@@ -44,7 +44,7 @@ for d_i = 1:size(dilation_arr, 1)
                     val_loss_main = vals(:,4);
                     val_loss_secondary = vals(:,5);
 
-                    plot(iter_num, val_loss_main);                
+                    plot(iter_num, train_loss_main);                
                 end
             end
         end

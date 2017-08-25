@@ -1,0 +1,1 @@
+Iterations:     0 iou: 0.6556 dice: 0.4703 recall: 0.4137 precision: 0.5683 

@@ -1,0 +1,7 @@
+1x1x1x1_0_1 0 iou: 0.6958 dice: 0.5479 recall: 0.5284 precision: 0.6050
+1x1x1x1_0_1 8 iou: 0.7195 dice: 0.6035 recall: 0.6148 precision: 0.6110
+1x1x1x1_0_1 16 iou: 0.7207 dice: 0.6057 recall: 0.6253 precision: 0.6055
+1x1x1x1_0_1 24 iou: 0.7150 dice: 0.5923 recall: 0.6116 precision: 0.5899
+1x1x1x1_0_1 32 iou: 0.7116 dice: 0.5851 recall: 0.6045 precision: 0.5842
+1x1x1x1_0_1 40 iou: 0.7096 dice: 0.5807 recall: 0.5945 precision: 0.5859
+1x1x1x1_0_1 48 iou: 0.7094 dice: 0.5814 recall: 0.5879 precision: 0.5927

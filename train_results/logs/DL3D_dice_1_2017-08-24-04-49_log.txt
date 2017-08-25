@@ -1,0 +1,1 @@
+arch ID: 0 | max iters:     100000 | max iters stage 0 :         -1 | train method : 1 | lr : 0.0001

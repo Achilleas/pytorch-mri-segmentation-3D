@@ -99,7 +99,7 @@ else:
     if not os.path.exists(results_dir):
         print('Creating directory at:' , results_dir)
         os.makedirs(results_dir)
-    results_file = open(os.path.join(results_dir, os.path.splitext(os.path.basename(models_path))[0] + '.txt'), 'w+')
+    results_file = open(os.path.join(results_dir, os.path.splitext(os.path.basename(models_path))[0] + '_ep_' + str(extra_patch) + '.txt'), 'w+')
 
 if num_labels == 2:
     onlyLesions = True
