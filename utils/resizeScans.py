@@ -14,7 +14,6 @@ import datetime
 import subprocess
 from docopt import docopt
 import PP
-import nilearn.image as nimg
 import normalizations as NORM
 import augmentations as AUGM
 #this utility resizes images to a specific dimension given by the user

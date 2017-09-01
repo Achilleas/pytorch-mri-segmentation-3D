@@ -10,19 +10,24 @@ import torch
 #outputDir = '/output'
 
 #local
+main_folder_path = '../Data/MS2017b/'
 fpx = './'
-inputDir = '/input'
-outputDir = '/output'
+inputDir = 'input/'
+outputDir = 'output/'
 
 #PARAMS
 useGPU = 0
 gpu0 = 0
 patch_size = 60
 extra_patch = 5
-model_paths = [fpx + 'EXPNETXXX.pth']
+model_paths = [fpx + 'analysis/models/EXP3D_1x1x1x1_0_0_dice_1_best.pth']
 weights = [1]
-
-sys.path.append(fpx + '/utils/')
+#EXP3D_1x1x1x1_0_0_dice_1_best.pth
+#EXP3D_2x2x2x2_0_0_dice_1_best.pth
+#EXP3D_1x1x1x1_0_1_dice_1_best.pth
+#EXP3D_1x1x1x1_1_1_dice_1_best.pth
+##EXP3D_1x1x1x1_0_1_dice_1_best.pth (with ep = 16)
+sys.path.append(fpx + 'utils/')
 sys.path.append(fpx + 'architectures/deeplab_3D/')
 sys.path.append(fpx + 'architectures/unet_3D/')
 sys.path.append(fpx + 'architectures/hrnet_3D/')
@@ -42,14 +47,14 @@ import evalFP as EFP
 import PP
 import torch
 
-#step 1: read image from input folder (pre/)
+#step 1: read image from input folder
 #step 2: resize image to 200x200x100 + apply normalizations
 #step 3: make prediction by patches (with augmentations)
 #step 4: save prediction to output folder
 #step 5: resize prediction back to original size of image
 
 
-img_path = os.path.join(inputDir, 'pre', 'FLAIR.nii.gz')
+img_path = os.path.join(inputDir, 'FLAIR.nii.gz')
 img_path_rs = os.path.join(outputDir, 'FLAIR_rs.nii.gz')
 
 wmh_path_rs = os.path.join(outputDir, 'wmh_rs.nii.gz')
@@ -66,9 +71,8 @@ RS.convertSize2(img_path, img_path_rs, new_size)
 affine_rs = nib.load(img_path_rs).get_affine()
 
 #normalize using histogram and variance normalization
-RS.normalizeScan(img_path_rs, img_path_rs, main_folder_path=fpx)
+RS.normalizeScan(img_path_rs, img_path_rs, main_folder_path=main_folder_path)
 
-print(glob.glob('/output/*'))
 #read preprocessed img
 img, affine = PP.numpyFromScan(img_path_rs, get_affine = True)
 img = img.transpose((3,0,1,2))
@@ -83,20 +87,20 @@ for i, model_path in enumerate(model_paths):
 	isPriv = False
 
 	#load model
-    if 'EXP3D' in f_name:
-        experiment = f_name.replace('EXP3D_', '').replace('.pth', '').split('_')
-        experiment = '_'.join(experiment[0:3])
-        dilation_arr, isPriv, withASPP = PP.getExperimentInfo(experiment)
-        model = exp_net_3D.getExpNet(num_labels, dilation_arr, isPriv, NoLabels2 = num_labels2, withASPP = withASPP)
-    elif 'HR3D' in f_name:
-        model = highresnet_3D.getHRNet(num_labels)
-    elif 'DL3D' in f_name:
-        model = deeplab_resnet_3D.Res_Deeplab(num_labels)
-    elif 'UNET3D' in  f_name:
-        model = unet_3D.UNet3D(1, num_labels)
-    else:
-        print('No model available for this .pth')
-        sys.exit()
+	if 'EXP3D' in f_name:
+		experiment = f_name.replace('EXP3D_', '').replace('.pth', '').split('_')
+		experiment = '_'.join(experiment[0:3])
+		dilation_arr, isPriv, withASPP = PP.getExperimentInfo(experiment)
+		model = exp_net_3D.getExpNet(num_labels, dilation_arr, isPriv, NoLabels2 = 209, withASPP = withASPP)
+	elif 'HR3D' in f_name:
+		model = highresnet_3D.getHRNet(num_labels)
+	elif 'DL3D' in f_name:
+		model = deeplab_resnet_3D.Res_Deeplab(num_labels)
+	elif 'UNET3D' in  f_name:
+		model = unet_3D.UNet3D(1, num_labels)
+	else:
+		print('No model available for this .pth')
+		sys.exit()
 
 	if useGPU:
 	    saved_state_dict = torch.load(model_path)
@@ -109,14 +113,14 @@ for i, model_path in enumerate(model_paths):
 	print('Predicting...')
 	if not isinstance(out, np.ndarray):
 		if isPriv:
-			out = EFP.testPredict(img, model, num_labels, 209, 1, gpu0, useGPU, stride = 50, patch_size = 60, test_augm = True, extra_patch = extra_patch, get_soft = True)
+			out = EFP.testPredict(img, model, num_labels, 209, 1, gpu0, useGPU, stride = 50, patch_size = 60, test_augm = False, extra_patch = extra_patch, get_soft = True)
 		else:
-			out = EF.testPredict(img, model, num_labels, 1, gpu0, useGPU, stride = 50, patch_size = 60, test_augm = True, extra_patch = extra_patch, get_soft = True)
+			out = EF.testPredict(img, model, num_labels, 1, gpu0, useGPU, stride = 50, patch_size = 60, test_augm = False, extra_patch = extra_patch, get_soft = True)
 	else:
 		if isPriv:
-			out += EFP.testPredict(img, model, num_labels, 209, 1, gpu0, useGPU, stride = 50, patch_size = 60, test_augm = True, extra_patch = extra_patch, get_soft = True)
+			out += EFP.testPredict(img, model, num_labels, 209, 1, gpu0, useGPU, stride = 50, patch_size = 60, test_augm = False, extra_patch = extra_patch, get_soft = True)
 		else:
-			out += EF.testPredict(img, model, num_labels, 1, gpu0, useGPU, stride = 50, patch_size = 60, test_augm = True, extra_patch = extra_patch, get_soft = True)
+			out += EF.testPredict(img, model, num_labels, 1, gpu0, useGPU, stride = 50, patch_size = 60, test_augm = False, extra_patch = extra_patch, get_soft = True)
 
 out /= float(len(model_paths))
 out = np.argmax(out, axis = 0)

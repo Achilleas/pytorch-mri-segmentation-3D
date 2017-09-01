@@ -227,7 +227,6 @@ def getPatchPrediction(img_patch, model, useGPU, gpu0, extra_pad = 10, test_augm
             out2_np_total = out2_np[:,:,(pd):(n_i-pd),(pd):(n_j-pd),(pd):(n_k-pd)]
         else:
             out2_np_total += out2_np[:,:,(pd):(n_i-pd),(pd):(n_j-pd),(pd):(n_k-pd)]
-    gc.collect()
     return (out1_np_total), (out2_np_total / num_augm)
 
 def numpySoftmax(x, axis_):
