@@ -5,6 +5,7 @@ import torch
 import numpy as np
 affine_par = True
 
+#FROM https://github.com/isht7/pytorch-deeplab-resnet
 
 def outS(i):
     i = int(i)
